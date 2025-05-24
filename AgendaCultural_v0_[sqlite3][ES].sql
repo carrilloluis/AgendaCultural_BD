@@ -1,3 +1,9 @@
+/*
+@description Gestión de los Eventos Culturales de la ciudad
+@author Luis Carrillo Gutiérrez
+@date Agosto, 2008
+@version 0.0.1
+*/
 DROP TABLE IF EXISTS [Categoría Cultural];
 CREATE TABLE IF NOT EXISTS [Categoría Cultural]
 (
