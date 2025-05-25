@@ -1,0 +1,38 @@
+@startuml
+	hide circle
+	skin rose
+	hide empty members
+	entity CategoríaCultural {
+		*id : INTEGER
+		denominación : VARCHAR
+	}
+	entity EventoCultural {
+		*id : INTEGER
+		título : VARCHAR
+		fecha : DATE
+		hora : TIME
+		descripción : TEXT
+		gráfico : TEXT 
+		detalles : TEXT
+		url : VARCHAR
+		periodicidad : ENUM
+		estado : BOOLEAN
+	}
+	entity LugarCultural {
+		*id : INTEGER
+		denominación : VARCHAR
+		dirección : VARCHAR
+	}
+	entity CategoriasEvento {
+		id_evento : INTEGER
+		id_categoría : INTEGER
+	}
+	entity LugarEvento {
+		id evento : INTEGER
+		id lugar : INTEGER
+	}
+	EventoCultural ||-d-|{ CategoriasEvento
+	CategoríaCultural ||-l-o{ CategoriasEvento
+	LugarEvento }o-r-|| LugarCultural
+	LugarEvento }|-d-|| EventoCultural
+@enduml
