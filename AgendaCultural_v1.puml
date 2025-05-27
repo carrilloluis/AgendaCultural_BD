@@ -1,0 +1,49 @@
+@startuml
+	hide circle
+	skin rose
+	hide empty members
+	entity CategoríaCultural {
+		*id : INTEGER
+		denominación : VARCHAR
+	}
+	entity EventoCultural {
+		*id : INTEGER
+		título : VARCHAR
+		descripción : TEXT
+		url : VARCHAR
+		estado : CHAR
+	}
+	entity Cronograma {
+		*id : INTEGER
+		id_evento : INTEGER
+		fecha_comienzo : DATETIME
+		fecha_final : DATE
+		periodicidad : CHAR
+	}
+	entity ArchivoAdjuntos {
+		*id : INTEGER
+		id_evento : INTEGER
+		tipo : CHAR
+		archivo_adjunto : TEXT
+		nombre_original : TEXT
+	}
+	entity LugarCultural {
+		*id : INTEGER
+		denominación : VARCHAR
+		dirección : VARCHAR
+	}
+	entity CategoriasEvento {
+		*id_categoría : INTEGER
+		*id_evento : INTEGER
+	}
+	entity LugarEvento {
+		*id_lugar : INTEGER
+		*id_evento : INTEGER
+	}
+	EventoCultural ||-d-|{ CategoriasEvento
+	CategoríaCultural ||-l-o{ CategoriasEvento
+	LugarEvento }o-r-|| LugarCultural
+	LugarEvento }|-d-|| EventoCultural
+	EventoCultural ||-r-|| Cronograma
+	EventoCultural ||-l-o{ ArchivoAdjuntos
+@enduml
